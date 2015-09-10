@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::match(['get', 'post'], '/', function () {
+    return view('main', ['appName' => env('APP_DEFAULT_NAME', '')]);
 });
+Route::controller('users', 'User\UserController');
+
+
+// Route::group(['namespace' => 'Admin'], function()
+// {
+// 	// Controllers Within The "App\Http\Controllers\Admin" Namespace
+
+// 	Route::group(['namespace' => 'User'], function()
+// 	{
+// 		// Controllers Within The "App\Http\Controllers\Admin\User" Namespace
+// 	});
+// });
