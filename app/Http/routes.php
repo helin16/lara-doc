@@ -10,9 +10,11 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Entities\System\Auth\Session;
 
 Route::match(['get', 'post'], '/', function () {
-    return view('main', ['appName' => env('APP_DEFAULT_NAME', '')]);
+	$results = Session::all();
+	return view('main', ['sessions' => $results]);
 });
 Route::controller('users', 'User\UserController');
 

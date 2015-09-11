@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><?php echo $appName; ?></title>
+		<title>@yield('appName')</title>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
@@ -17,7 +17,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 							</button>
-							<a class="navbar-brand" href="/"><?php echo $appName; ?></a>
+							<a class="navbar-brand" href="/">@yield('appName')</a>
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
@@ -46,7 +46,9 @@
 		</section>
 		<section class="section-body">
 			@section('section-body')
-				fdsfds
+				@foreach ($sessions as $session)
+				    <p>This is user {{ $session->id }}</p>
+				@endforeach
 			@show
 		</section>
 		<footer class="section-footer">
