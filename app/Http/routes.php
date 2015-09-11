@@ -10,21 +10,26 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-use App\Entities\System\Auth\Session;
 
-Route::match(['get', 'post'], '/', function () {
-	$results = Session::all();
-	return view('main', ['sessions' => $results]);
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+
+
+
+
+Route::group(['namespace' => 'Backend'], function()
+{
+//  Controllers Within The "App\Http\Controllers\Admin" Namespace
+
+//  Route::controller('users', 'User\UserController');
+//  Route::group(['namespace' => 'User'], function()
+//  {
+//    Controllers Within The "App\Http\Controllers\Admin\User" Namespace
+//  });
 });
-Route::controller('users', 'User\UserController');
-
-
-// Route::group(['namespace' => 'Admin'], function()
-// {
-// 	// Controllers Within The "App\Http\Controllers\Admin" Namespace
-
-// 	Route::group(['namespace' => 'User'], function()
-// 	{
-// 		// Controllers Within The "App\Http\Controllers\Admin\User" Namespace
-// 	});
-// });
