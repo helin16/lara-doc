@@ -1,7 +1,9 @@
 <?php
 namespace App\Entities;
 
+use App\Entities\System\Auth\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 /**
  * The base abstract entity
  *
@@ -38,5 +40,21 @@ abstract class BaseEntityAbstract extends Model
     public function updatedBy()
     {
         return $this->belongsTo('App\Entity\System\Auth\User');
+    }
+    /**
+     * Save a new model and return the instance.
+     *
+     * @param  array  $attributes
+     * @return static
+     */
+    public static function create(array $attributes = [])
+    {
+        if(Auth::user() instanceof User)
+
+        $attributes['active'] = 1;
+//         $attributes['create_at'] = new
+        $model = new static($attributes);
+        $model->save();
+        return $model;
     }
 }
