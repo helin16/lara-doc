@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateNutritionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('useraccount', function (Blueprint $table) {
+        Schema::create('nutrition', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->rememberToken();
-            $table->string('person_id');
+            $table->string('name', 50)->unique();
+            $table->string('description', 255);
             $table->boolean('active')->index();
             $table->timestamp('created_at')->index();
             $table->integer('created_by')->index();
@@ -33,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('useraccount');
+        Schema::drop('nutrition');
     }
 }

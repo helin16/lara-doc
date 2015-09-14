@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateLabelTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,15 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('useraccount', function (Blueprint $table) {
+        Schema::create('label', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('password', 60);
-            $table->rememberToken();
-            $table->string('person_id');
+            $table->integer('product_id')->index();
+            $table->string('product_name');
+            $table->dateTime('printed_date')->index();
+            $table->dateTime('use_by_date')->index();
+            $table->integer('printed_by')->index();
+            $table->double('printed_price', 10, 4);
+            $table->string('version_no', 20)->index();
             $table->boolean('active')->index();
             $table->timestamp('created_at')->index();
             $table->integer('created_by')->index();
@@ -33,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('useraccount');
+        Schema::drop('label');
     }
 }

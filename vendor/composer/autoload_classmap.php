@@ -6,8 +6,25 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'CreateAllergentIngredientTable' => $baseDir . '/database/migrations/2015_09_14_141341_create_allergent_ingredient_table.php',
+    'CreateAllergentTable' => $baseDir . '/database/migrations/2015_09_14_141950_create_allergent_table.php',
+    'CreateIngredientProductmaterialTable' => $baseDir . '/database/migrations/2015_09_14_141246_create_ingredient_productmaterial_table.php',
+    'CreateIngredientTable' => $baseDir . '/database/migrations/2015_09_14_141236_create_ingredient_table.php',
+    'CreateLabelTable' => $baseDir . '/database/migrations/2015_09_14_142133_create_label_table.php',
+    'CreateNutritionProductmaterialTable' => $baseDir . '/database/migrations/2015_09_14_142056_create_nutrition_productmaterial_table.php',
+    'CreateNutritionTable' => $baseDir . '/database/migrations/2015_09_14_142049_create_nutrition_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePersonTable' => $baseDir . '/database/migrations/2015_09_14_142126_create_person_table.php',
+    'CreateProductProductcategoryTable' => $baseDir . '/database/migrations/2015_09_14_140246_create_product_productcategory_table.php',
+    'CreateProductProductmaterialTable' => $baseDir . '/database/migrations/2015_09_14_135351_create_product_productmaterial_table.php',
+    'CreateProductStoreTable' => $baseDir . '/database/migrations/2015_09_14_140620_create_product_store_table.php',
+    'CreateProductTable' => $baseDir . '/database/migrations/2015_09_14_134958_create_product_table.php',
+    'CreateProductcategoryTable' => $baseDir . '/database/migrations/2015_09_14_140255_create_productcategory_table.php',
+    'CreateProductmaterialTable' => $baseDir . '/database/migrations/2015_09_14_135722_create_productmaterial_table.php',
+    'CreateRoleTable' => $baseDir . '/database/migrations/2015_09_14_142120_create_role_table.php',
+    'CreateServemeasurementTable' => $baseDir . '/database/migrations/2015_09_14_142111_create_servemeasurement_table.php',
     'CreateSessionTable' => $baseDir . '/database/migrations/2015_09_11_050700_create_session_table.php',
+    'CreateStoreTable' => $baseDir . '/database/migrations/2015_09_14_140615_create_store_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -515,4 +532,5 @@ return array(
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UserTableSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
 );
