@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function(){
+    return view('main');
+});
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

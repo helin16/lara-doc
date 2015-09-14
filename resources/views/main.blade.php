@@ -8,14 +8,12 @@
     <body>
         <section class="section-header">
             @section('section-header')
-                @include('backend.menu_top');
+                @include('menu_top');
             @show
         </section>
         <section class="section-body">
             @section('section-body')
-                @foreach ($sessions as $session)
-                    <p>This is user {{ $session->id }}</p>
-                @endforeach
+                dsfds
             @show
         </section>
         <footer class="section-footer">
