@@ -1,7 +1,7 @@
 <?php
 namespace App\Entities;
 
-use App\Entities\System\Auth\User;
+use App\Entities\System\Auth\UserAccount;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 /**
@@ -30,7 +30,7 @@ abstract class BaseEntityAbstract extends Model
      */
     public function createdBy()
     {
-        return $this->belongsTo('App\Entity\System\Auth\User');
+        return $this->belongsTo('App\Entity\System\Auth\UserAccount');
     }
     /**
      * Getting the updater
@@ -39,7 +39,7 @@ abstract class BaseEntityAbstract extends Model
      */
     public function updatedBy()
     {
-        return $this->belongsTo('App\Entity\System\Auth\User');
+        return $this->belongsTo('App\Entity\System\Auth\UserAccount');
     }
     /**
      * Save a new model and return the instance.
@@ -49,12 +49,29 @@ abstract class BaseEntityAbstract extends Model
      */
     public static function create(array $attributes = [])
     {
-        if(Auth::user() instanceof User)
+        if(!Auth::user() instanceof UserAccount)
+            throw new \Exception('Access denid for creating a new ' . get_called_class());
 
         $attributes['active'] = 1;
-//         $attributes['create_at'] = new
-        $model = new static($attributes);
-        $model->save();
-        return $model;
+        $attributes['create_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
+        $attributes[self::CREATED_BY . '_id'] = Auth::user()->id();
+        $attributes['updated_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
+        $attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
+        return parent::create($attributes);
+    }
+    /**
+     * Update the model in the database.
+     *
+     * @param  array  $attributes
+     * @return bool|int
+     */
+    public function update(array $attributes = [])
+    {
+        if(!Auth::user() instanceof UserAccount)
+            throw new \Exception('Access denid for creating a new ' . get_called_class());
+
+        $attributes['updated_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
+        $attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
+        return parent::update($attributes);
     }
 }
