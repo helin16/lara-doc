@@ -57,6 +57,7 @@ abstract class BaseEntityAbstract extends Model
         $attributes[self::CREATED_BY . '_id'] = Auth::user()->id();
         $attributes['updated_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
         $attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
+        var_dump($attributes);
         return parent::create($attributes);
     }
     /**

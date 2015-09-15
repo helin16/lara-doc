@@ -3,7 +3,7 @@
 namespace App\Entities\System\Auth;
 use App\Entities\BaseEntityAbstract;
 
-class Person extends BaseEntityAbstract
+class Store extends BaseEntityAbstract
 {
     /**
      * The database table used by the model.

@@ -29,7 +29,7 @@ class User extends BaseEntityAbstract implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['username', 'password'];
+    protected $fillable = ['email', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
