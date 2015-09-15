@@ -28,7 +28,7 @@
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="/js/main.js"></script>
         <script>
-            $(document).ready(function(){
+            $(document).ready(function() {
             	var user = {};
             	var pageJs = $(document).initApp().setUser(user);
             });
