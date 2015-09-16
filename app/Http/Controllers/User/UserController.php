@@ -13,14 +13,14 @@ class UserController extends Controller
      */
     public function getIndex()
     {
-        return 'hello, user';
+        return 'hello, user <pre>' . print_r($_REQUEST,true);
     }
     /**
      * Responds to requests to GET /users/show/1
      */
-    public function getShow($id)
+    public function getUser($id)
     {
-         return 'hello, user: ' . $id;
+         return response(User::find($id)->toJson())->header('content-type', 'Application/json');
     }
     /**
      * Responds to requests to GET /users/admin-profile

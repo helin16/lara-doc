@@ -1,0 +1,38 @@
+Directory: /home/frank/git/magento-b2b/core/promotion/Archive
+FileName: 14_09_2015
+DatabaseName: bpcinternal
+create database bpcinternal if not exists
+importing datases from /home/frank/git/magento-b2b/core/promotion/Archive/14_09_2015.7z, may take few minutes
+
+7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+p7zip Version 9.20 (locale=en_AU.UTF-8,Utf16=on,HugeFiles=on,8 CPUs)
+
+Processing archive: /home/frank/git/magento-b2b/core/promotion/Archive/14_09_2015.7z
+
+Extracting  10_09_2015.sqlDirectory: /home/frank/git/kusema_admin/core/promotion/Archive
+FileName: 14_09_2015
+DatabaseName: kusemaadmin
+create database kusemaadmin if not exists
+importing datases from /home/frank/git/kusema_admin/core/promotion/Archive/14_09_2015.7z, may take few minutes
+import sql files
+
+7-Zip (A) [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+p7zip Version 9.20 (locale=en_AU.UTF-8,Utf16=on,HugeFiles=on,8 CPUs)
+
+Processing archive: /home/frank/git/kusema_admin/core/promotion/Archive/../question.7z
+
+Extracting  question.sql
+
+Everything is Ok
+
+Size:       611726293
+Compressed: 31742778
+import sql files
+done
+
+
+Everything is Ok
+
+Size:       566005956
+Compressed: 42346997
+done
