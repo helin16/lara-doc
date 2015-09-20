@@ -13,7 +13,9 @@
         </section>
         <section class="section-body"  onclick="$.getApp()">
             @section('section-body')
-                dsfds
+                @foreach ($users as $user)
+				    <p>This is user {{ $user->id }} with email {{ $user->email }}</p>
+				@endforeach
             @show
         </section>
         <footer class="section-footer">

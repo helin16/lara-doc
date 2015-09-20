@@ -49,15 +49,16 @@ abstract class BaseEntityAbstract extends Model
      */
     public static function create(array $attributes = [])
     {
-        if(!Auth::user() instanceof UserAccount)
-            throw new \Exception('Access denid for creating a new ' . get_called_class());
+        //if(!Auth::user() instanceof UserAccount)
+         //   throw new \Exception('Access denid for creating a new ' . get_called_class());
 
         $attributes['active'] = 1;
         $attributes['create_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
-        $attributes[self::CREATED_BY . '_id'] = Auth::user()->id();
+        $attributes['create_at'] = $attributes['create_at']->format('Y-m-d H:i:s');
+        //$attributes[self::CREATED_BY . '_id'] = Auth::user()->id();
         $attributes['updated_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
-        $attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
-        var_dump($attributes);
+        $attributes['updated_at'] = $attributes['updated_at']->format('Y-m-d H:i:s');
+        //$attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
         return parent::create($attributes);
     }
     /**

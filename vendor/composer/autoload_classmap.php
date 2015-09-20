@@ -25,6 +25,7 @@ return array(
     'CreateServemeasurementTable' => $baseDir . '/database/migrations/2015_09_14_142111_create_servemeasurement_table.php',
     'CreateSessionTable' => $baseDir . '/database/migrations/2015_09_11_050700_create_session_table.php',
     'CreateStoreTable' => $baseDir . '/database/migrations/2015_09_14_140615_create_store_table.php',
+    'CreateTestsTable' => $baseDir . '/database/migrations/2015_09_15_120402_create_tests_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function(){
-    return view('main');
-});
+Route::any('products/add', 'ProductController@addProduct');
+Route::controller('products', 'ProductController');
+
+// Route::get('products', 'ProductController@getIndex');
+// Route::get('products/add', ['uses' => 'ProductController@addProduct']);
+// Route::get('products/{id}', ['uses' => 'ProductController@viewProduct'])
+// 	->where('id', '[0-9]+');
+
+//Route::controller('product/add', 'ProductController@addProduct');
+//Route::controller('/', 'HomeController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

@@ -37,4 +37,9 @@ class User extends BaseEntityAbstract implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    public function person()
+    {
+    	$this->belongsTo('App\Entities\System\Auth\Person', 'person_id');
+    }
 }
