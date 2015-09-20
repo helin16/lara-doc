@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Product;
 use App\Entities\Product\Ingredient;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Database\Eloquent\Model;
 
 class IngredientController extends Controller
 {
@@ -23,5 +24,9 @@ class IngredientController extends Controller
     	if(intval(trim($id)) === 0)
     		die('invlaid id passed in');
         return 'this is ' . __FUNCTION__ . ' of ' . __CLASS__  . ' id => ' . $id;
+    }
+    public function getAdd($name, $description)
+    {
+    	Ingredient::create(['name' => $name, 'description' => $description]);
     }
 }

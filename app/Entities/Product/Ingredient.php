@@ -2,6 +2,7 @@
 
 namespace App\Entities\Product;
 use App\Entities\BaseEntityAbstract;
+use PhpParser\Node\Expr\Array_;
 
 class Ingredient extends BaseEntityAbstract
 {
@@ -11,13 +12,9 @@ class Ingredient extends BaseEntityAbstract
      * @var string
      */
     protected $table = 'ingredient';
-    public static function create($name, $description = "")
+    protected $fillable = ['name', 'description'];
+    public static function create(array $data = [])
     {
-    	if(($name = trim($name)) === '')
-    		throw new \Exception('invalid name "' . trim($name) . '" passed in');
-    	$attributes = [];
-        $attributes['name'] = trim($name);
-        $attributes['description'] = ( ($description = trim($description)) === '' ? $name : $description );
-        return parent::create($attributes);
+        return parent::create($data);
     }
 }
