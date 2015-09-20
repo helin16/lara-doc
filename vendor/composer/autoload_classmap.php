@@ -50,7 +50,7 @@ return array(
     'CreateNutritionProductmaterialTable' => $baseDir . '/database/migrations/2015_09_14_142056_create_nutrition_productmaterial_table.php',
     'CreateNutritionTable' => $baseDir . '/database/migrations/2015_09_14_142049_create_nutrition_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-    'CreatePersonTable' => $baseDir . '/database/migrations/2015_09_15_100207_create_person_table.php',
+    'CreatePersonTable' => $baseDir . '/database/migrations/2015_09_14_142126_create_person_table.php',
     'CreateProductProductcategoryTable' => $baseDir . '/database/migrations/2015_09_14_140246_create_product_productcategory_table.php',
     'CreateProductProductmaterialTable' => $baseDir . '/database/migrations/2015_09_14_135351_create_product_productmaterial_table.php',
     'CreateProductStoreTable' => $baseDir . '/database/migrations/2015_09_14_140620_create_product_store_table.php',
