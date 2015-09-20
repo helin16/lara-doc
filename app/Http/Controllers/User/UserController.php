@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function getIndex()
     {
-        return 'hello, user <pre>' . print_r($_REQUEST,true);
+        return 'hello, this is ' . __FUNCTION__ . '<br/>Request:<br/><pre>' . print_r($_REQUEST,true);
     }
     /**
      * Responds to requests to GET /users/show/1

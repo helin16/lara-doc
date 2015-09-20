@@ -11,7 +11,7 @@
 |
 */
 
-Route::controller('user','User\UserController');
+Route::controller('ingredient','Product\IngredientController');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
