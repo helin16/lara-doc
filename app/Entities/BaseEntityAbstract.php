@@ -66,7 +66,7 @@ abstract class BaseEntityAbstract extends Model
      */
     public function performUpdate(Builder $query, array $options = [])
     {
-        if(!Auth::user() instanceof UserAccount)
+        if(!Auth::user() instanceof User)
             throw new \Exception('Access denid for creating a new ' . get_called_class());
 
         $this->attributes[self::UPDATED_AT] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));

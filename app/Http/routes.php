@@ -12,11 +12,8 @@
 */
 use App\Entities\System\Auth\User;
 Route::get('/home', function(Request $request){
-    $sysUserId = env('ID_USER_SYSTEM', 1);
-    Auth::loginUsingId($sysUserId);
-    $user = new User();
-    $user->email='test1@fdsds.com';
-    $user->save();
+    Auth::loginUsingId(11);
+    var_dump(Auth::user()->person); die;
     return view('main');
 });
 

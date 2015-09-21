@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SysAdminSeeder::class);
         $this->call(StoreTableSeeder::class);
         $this->call(RoleTableSeeder::class);
-//         $this->call(PersonTableSeeder::class);
-//         $this->call(UserTableSeeder::class);
+        $this->call(PersonTableSeeder::class);
+        $this->call(UserTableSeeder::class);
 
         Model::reguard();
     }
@@ -84,20 +84,17 @@ class PersonTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Entities\System\Auth\Store::all(['id'])->each(function($store){
-            App\Entities\System\Auth\Role::all(['id'])->each(function($role) {
-                $faker = new Faker\Generator;
-                $faker->addProvider(App\Entities\System\Auth\Person::class);
-
+        foreach(App\Entities\System\Auth\Store::all(['id']) as $store) {
+            foreach(App\Entities\System\Auth\Role::all(['id']) as $role) {
                 App\Entities\System\Auth\Person::create([
-                    'firstName' => $faker->firstName,
-                    'lastName' => $faker->lastName,
-                    'email' => $faker->email,
-                    'created_by' => Auth::user()->id,
-                    'updated_by' => Auth::user()->id
+                    'firstName' => 'person_store_' . $store->id,
+                    'lastName' => 'person_role_' . $role->id,
+                    'store_id' => $store->id,
+                    'role_id' => $role->id,
+                    'email' => 'email_' . $store->id . '_' . $role->id . '@test.com'
                 ]);
-            });
-        });
+            }
+        }
     }
 }
 
@@ -110,6 +107,9 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Entities\System\Auth\User::class, 10)->create();
+        factory(App\Entities\System\Auth\User::class, DB::table('person')->count())->create()->each(function($user){
+            $user->person_id = rand(1, DB::table('person')->count());
+            $user->save();
+        });
     }
 }
