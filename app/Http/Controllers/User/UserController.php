@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Entities\System\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -34,6 +35,6 @@ class UserController extends Controller
      */
     public function getProfile(Request $request, $id = null)
     {
-		var_dump($id);
+		var_dump(Auth::user()->toJson());
     }
 }

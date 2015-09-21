@@ -20,11 +20,7 @@ class CreateProductTable extends Migration
             $table->string('used_by_vriance', 20);
             $table->double('unit_price', 10, 4);
             $table->string('label_version_no', 10);
-            $table->boolean('active')->index();
-            $table->timestamp('created_at')->index();
-            $table->integer('created_by')->index();
-            $table->timestamp('updated_at')->index();
-            $table->integer('updated_by')->index();
+            $table->createNUpdate();
         });
     }
 

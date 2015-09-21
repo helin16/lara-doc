@@ -6,6 +6,10 @@ use Closure;
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Grammars\Grammar;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Entities\System\Auth\User;
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 class Blueprint
 {
@@ -777,6 +781,17 @@ class Blueprint
         $this->timestamp('created_at');
 
         $this->timestamp('updated_at');
+    }
+    /**
+     *
+     */
+    public function createNUpdate()
+    {
+        $this->boolean('active')->index()->default(1);
+        $this->timestamp('created_at')->index()->default(DB::raw('CURRENT_TIMESTAMP'));
+        $this->integer('created_by')->index();
+        $this->timestamp('updated_at')->index()->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+        $this->integer('updated_by')->index();
     }
 
     /**

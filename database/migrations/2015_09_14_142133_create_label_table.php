@@ -21,11 +21,7 @@ class CreateLabelTable extends Migration
             $table->integer('printed_by')->index();
             $table->double('printed_price', 10, 4);
             $table->string('version_no', 20)->index();
-            $table->boolean('active')->index();
-            $table->timestamp('created_at')->index();
-            $table->integer('created_by')->index();
-            $table->timestamp('updated_at')->index();
-            $table->integer('updated_by')->index();
+            $table->createNUpdate();
         });
     }
 

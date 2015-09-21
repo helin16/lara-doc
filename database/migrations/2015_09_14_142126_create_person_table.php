@@ -19,11 +19,7 @@ class CreatePersonTable extends Migration
             $table->string('email', 100)->index();
             $table->integer('store_id')->index();
             $table->integer('role_id')->index();
-            $table->boolean('active')->index();
-            $table->timestamp('created_at')->index();
-            $table->integer('created_by')->index();
-            $table->timestamp('updated_at')->index();
-            $table->integer('updated_by')->index();
+            $table->createNUpdate();
         });
     }
 

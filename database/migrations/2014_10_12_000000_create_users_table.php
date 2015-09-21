@@ -18,11 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->rememberToken();
             $table->integer('person_id')->index();
-            $table->boolean('active')->index();
-            $table->timestamp('created_at')->index();
-            $table->integer('created_by')->index();
-            $table->timestamp('updated_at')->index();
-            $table->integer('updated_by')->index();
+            $table->createNUpdate();
         });
     }
 

@@ -1,9 +1,12 @@
 <?php
 namespace App\Entities;
 
-use App\Entities\System\Auth\UserAccount;
+use App\Entities\System\Auth\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Doctrine\Instantiator\Exception\InvalidArgumentException;
+use Illuminate\Database\Eloquent\Builder;
+
 /**
  * The base abstract entity
  *
@@ -30,7 +33,7 @@ abstract class BaseEntityAbstract extends Model
      */
     public function createdBy()
     {
-        return $this->belongsTo('App\Entity\System\Auth\UserAccount');
+        return $this->belongsTo('App\Entity\System\Auth\UserAccount', self::CREATED_BY);
     }
     /**
      * Getting the updater
@@ -39,40 +42,35 @@ abstract class BaseEntityAbstract extends Model
      */
     public function updatedBy()
     {
-        return $this->belongsTo('App\Entity\System\Auth\UserAccount');
+        return $this->belongsTo('App\Entity\System\Auth\UserAccount', self::UPDATED_BY);
     }
     /**
-     * Save a new model and return the instance.
-     *
-     * @param  array  $attributes
-     * @return static
+     * (non-PHPdoc)
+     * @see \Illuminate\Database\Eloquent\Model::performInsert()
      */
-    public static function create(array $attributes = [])
+    public function performInsert(Builder $query, array $options = [])
+    {
+        if(!Auth::user() instanceof User)
+            throw new InvalidArgumentException('Access denid for creating a new ' . get_called_class());
+
+        $this->attributes['active'] = 1;
+        $this->attributes[self::CREATED_AT] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
+        $this->attributes[self::CREATED_BY] = Auth::user()->id;
+        $this->attributes[self::UPDATED_AT] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
+        $this->attributes[self::UPDATED_BY] = Auth::user()->id;
+        return parent::performInsert($query, $options);
+    }
+    /**
+     * (non-PHPdoc)
+     * @see \Illuminate\Database\Eloquent\Model::performUpdate()
+     */
+    public function performUpdate(Builder $query, array $options = [])
     {
         if(!Auth::user() instanceof UserAccount)
             throw new \Exception('Access denid for creating a new ' . get_called_class());
 
-        $attributes['active'] = 1;
-        $attributes['create_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
-        $attributes[self::CREATED_BY . '_id'] = Auth::user()->id();
-        $attributes['updated_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
-        $attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
-        var_dump($attributes);
-        return parent::create($attributes);
-    }
-    /**
-     * Update the model in the database.
-     *
-     * @param  array  $attributes
-     * @return bool|int
-     */
-    public function update(array $attributes = [])
-    {
-        if(!Auth::user() instanceof UserAccount)
-            throw new \Exception('Access denid for creating a new ' . get_called_class());
-
-        $attributes['updated_at'] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
-        $attributes[self::UPDATED_BY . '_id'] = Auth::user()->id();
-        return parent::update($attributes);
+        $this->attributes[self::UPDATED_AT] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
+        $this->attributes[self::UPDATED_BY] = Auth::user()->id;
+        return parent::performUpdate($query, $options);
     }
 }

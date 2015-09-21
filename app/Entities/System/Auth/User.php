@@ -16,7 +16,6 @@ class User extends BaseEntityAbstract implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-
     /**
      * The database table used by the model.
      *
@@ -37,4 +36,11 @@ class User extends BaseEntityAbstract implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    /**
+     * Getting the person
+     */
+    public function person()
+    {
+        $this->belongsTo('App\Entities\System\Auth\Person', 'person_id');
+    }
 }
