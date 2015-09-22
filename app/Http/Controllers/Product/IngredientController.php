@@ -14,7 +14,7 @@ class IngredientController extends Controller
      */
     public function getIndex()
     {
-        return 'this is ' . __FUNCTION__ . ' of ' . __CLASS__ ;
+        return view('Product.Ingredient.list', array('data' => ['id'=> 1 ] ));
     }
     /**
      * Responds to requests to GET /ingredient/id
