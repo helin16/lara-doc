@@ -788,7 +788,7 @@ class Blueprint
     public function createNUpdate()
     {
         $this->boolean('active')->index()->default(1);
-        $this->timestamp('created_at')->index()->default(DB::raw('CURRENT_TIMESTAMP'));
+        $this->dateTime('created_at')->index()->default('0001-01-01 00:00:00');
         $this->integer('created_by')->index();
         $this->timestamp('updated_at')->index()->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         $this->integer('updated_by')->index();
