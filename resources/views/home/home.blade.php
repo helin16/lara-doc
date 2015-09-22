@@ -1,5 +1,6 @@
 @extends('main')
 
+@section('body')
 <section class="section-header">
     @section('section-header')
         @include('home.menu_top');
@@ -17,3 +18,12 @@
         </div>
     @show
 </footer>
+@endsection
+
+@section('end-js')
+<script>
+   $(document).ready(function() {
+      	var pageJs = $(document).initApp().setUser(<?php echo Auth::user()->toJson(); ?>);
+    });
+</script>
+@endsection

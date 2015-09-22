@@ -1,9 +1,6 @@
 (function($){
 	var APP = function(){
-		var _defaults = {
-			'serverPath': '/MobileApp.php',
-			'id_dialogPage': 'dialogPage'
-		},
+		var _defaults = {},
 		_user = {};
 
 		this.getUser = function() {
