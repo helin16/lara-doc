@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary" style="width: 100%">
-                    <span class="hide-sm">Login</span>
+                    <span class="hidden-sm hidden-md hidden-xs">Login</span>
                     <i class="fa fa-chevron-right"></i>
                 </button>
             </div>
