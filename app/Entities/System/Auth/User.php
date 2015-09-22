@@ -37,10 +37,23 @@ class User extends BaseEntityAbstract implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
     /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = ['person'];
+    /**
      * Getting the person
      */
     public function person()
     {
         return $this->belongsTo('App\Entities\System\Auth\Person');
+    }
+    /**
+     * Getting the person as attribute
+     */
+    public function getPersonAttribute()
+    {
+    	return Person::find($this->person_id);
     }
 }

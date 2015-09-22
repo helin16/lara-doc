@@ -8,7 +8,7 @@
 </section>
 <section class="section-body"  onclick="$.getApp()">
     @section('section-body')
-        <?php echo Auth::user()->person ?>
+        <?php echo Auth::user()->person->toJson() ?>
     @show
 </section>
 <footer class="section-footer">
