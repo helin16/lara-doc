@@ -4,7 +4,7 @@
 <div class="text-center auth-wrapper">
     <div class="logo">login</div>
     <div class="login-form-div col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
-        <form method="POST" action="<?php echo route('auth::postLogin')?>" class="text-left">
+        <form method="POST" action="<?php echo route('Auth::postLogin')?>" class="text-left">
             {!! csrf_field() !!}
             <div class="form-group">
 				<label class="sr-only" for="email">Email:</label>

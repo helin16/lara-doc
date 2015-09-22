@@ -7,7 +7,7 @@
 </section>
 <section class="section-body"  onclick="$.getApp()">
     @section('section-body')
-        dsfds
+        <?php echo Auth::user()->person ?>
     @show
 </section>
 <footer class="section-footer">

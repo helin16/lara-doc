@@ -29,7 +29,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<?php echo route('auth::getLogout')?>"  title="@yield('current_user_name')">
+                    <a href="#"  title="@yield('current_user_name')">
                         <span class="glyphicon glyphicon-user"></span>
                         <span class="hidden-sm hidden-md hidden-lg">Current User</span>
                     </a>
@@ -51,7 +51,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="<?php echo route('auth::getLogout')?>"  title="Logout">
+                    <a href="<?php echo route('Auth::getLogout')?>"  title="Logout">
                         <span class="glyphicon glyphicon-off"></span>
                         <span class="hidden-sm hidden-md hidden-lg">LogOut</span>
                     </a>

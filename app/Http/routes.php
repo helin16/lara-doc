@@ -11,7 +11,7 @@
 |
 */
 // Authentication routes...
-Route::group(['prefix' => 'auth', 'as' => 'auth::'], function() {
+Route::group(['prefix' => 'auth', 'as' => 'Auth::'], function() {
     Route::get('login', ['as' => 'getLogin', 'uses' => 'Auth\AuthController@getLogin']);
     Route::post('login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
     Route::get('logout', ['as' => 'getLogout', 'uses' => 'Auth\AuthController@getLogout']);
@@ -26,8 +26,10 @@ Route::group(['prefix' => 'home', 'as' => 'HomePage::', 'middleware' => 'auth'],
     }]);
 });
 
+// url: /api/....
 Route::group(['namespace' => 'Api', 'prefix' => 'api', 'as' => 'api::', 'middleware' => 'auth'], function() {
     //  Controllers Within The "App\Http\Controllers\Api" Namespace
+    //url: /api/store
     Route::resource('store', 'Store\StoreController', ['only' => ['show', 'update']]);
     Route::resource('user', 'User\UserController');
     Route::get('person/store/{storeId}', 'User\PersonController@getByStore');
@@ -40,5 +42,5 @@ Route::group(['namespace' => 'Api', 'prefix' => 'api', 'as' => 'api::', 'middlew
 });
 
 Route::any('/', function(){
-    return redirect()->route('HomePage::root');
+    return redirect()->route('HomePage::root'); 
 });

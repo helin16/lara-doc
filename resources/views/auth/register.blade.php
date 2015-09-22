@@ -1,7 +1,7 @@
 @extends('main')
 
 @section('body')
-<form method="POST" action="/auth/register">
+<form method="POST" action="<?php echo route('Auth::getRegister'); ?>">
     {!! csrf_field() !!}
 
     <div>
