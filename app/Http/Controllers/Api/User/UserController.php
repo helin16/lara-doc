@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api\User;
 
 use App\Entities\System\Auth\User;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\ApiController;
 
-class UserController extends Controller
+class UserController extends ApiController
 {
     /**
      * Responds to requests to GET /users

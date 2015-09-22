@@ -11,4 +11,8 @@ class Store extends BaseEntityAbstract
      * @var string
      */
     protected $table = 'store';
+    public function persons()
+    {
+        $this->hasMany('App\Entities\System\Auth\Person');
+    }
 }

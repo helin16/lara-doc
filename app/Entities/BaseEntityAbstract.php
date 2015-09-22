@@ -50,8 +50,12 @@ abstract class BaseEntityAbstract extends Model
      */
     public function performInsert(Builder $query, array $options = [])
     {
-        if(!Auth::user() instanceof User)
-            throw new InvalidArgumentException('Access denid for creating a new ' . get_called_class());
+        if(!Auth::user() instanceof User) {
+            App::error(function(InvalidUserException $exception) {
+                Log::error($exception);
+                return 'Access denid for creating a new ' . get_called_class();
+            });
+        }
 
         $this->attributes['active'] = 1;
         $this->attributes[self::CREATED_AT] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
@@ -66,8 +70,12 @@ abstract class BaseEntityAbstract extends Model
      */
     public function performUpdate(Builder $query, array $options = [])
     {
-        if(!Auth::user() instanceof User)
-            throw new \Exception('Access denid for creating a new ' . get_called_class());
+        if(!Auth::user() instanceof User) {
+            App::error(function(InvalidUserException $exception) {
+                Log::error($exception);
+                return 'Access denid for creating a new ' . get_called_class();
+            });
+        }
 
         $this->attributes[self::UPDATED_AT] = new \DateTime('now', new \DateTimeZone(env('APP_TIMEZONE', 'UTC')));
         $this->attributes[self::UPDATED_BY] = Auth::user()->id;
