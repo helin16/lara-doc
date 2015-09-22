@@ -3,12 +3,27 @@
     <head>
         <title>@yield('appName')</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
-        @section('body')
-        @show
+        <section class="section-header">
+            @section('section-header')
+                @include('home.menu_top');
+            @show
+        </section>
+        <section class="section-body"  onclick="$.getApp()">
+            @section('section-body')
+                dsfds
+            @show
+        </section>
+        <footer class="section-footer">
+            @section('section-footer')
+                <div class="container">
+                    <p class="text-muted">&copy; test</p>
+                </div>
+            @show
+        </footer>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="/js/main.js"></script>

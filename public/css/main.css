@@ -11,6 +11,16 @@ body>.section-body {
 	padding: 60px 15px 0;
 }
 
+.auth-wrapper{
+	padding: 10% 0;
+}
+.auth-wrapper .logo {
+	color: #aaaaaa;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px 0;
+}
+
 .section-footer {
 	position: absolute;
 	bottom: 0;

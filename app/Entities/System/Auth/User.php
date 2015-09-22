@@ -41,6 +41,6 @@ class User extends BaseEntityAbstract implements AuthenticatableContract,
      */
     public function person()
     {
-        $this->belongsTo('App\Entities\System\Auth\Person', 'person_id');
+        return $this->belongsTo('App\Entities\System\Auth\Person');
     }
 }

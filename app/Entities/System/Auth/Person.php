@@ -11,5 +11,8 @@ class Person extends BaseEntityAbstract
      * @var string
      */
     protected $table = 'person';
-
+    public function user()
+    {
+        return $this->hasOne('App\Entities\System\Auth\User');
+    }
 }
