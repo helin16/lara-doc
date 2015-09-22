@@ -29,8 +29,31 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<?php echo route('auth::getLogout')?>">
-                        <i class="glyphicon glyphicon-off" title="Logout"></i>
+                    <a href="<?php echo route('auth::getLogout')?>"  title="@yield('current_user_name')">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="hidden-sm hidden-md hidden-lg">Current User</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a title="settings" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <span class="hidden-sm hidden-md hidden-lg">Settings</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo route('auth::getLogout')?>"  title="Logout">
+                        <span class="glyphicon glyphicon-off"></span>
+                        <span class="hidden-sm hidden-md hidden-lg">LogOut</span>
                     </a>
                 </li>
             </ul>

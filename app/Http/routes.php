@@ -26,12 +26,13 @@ Route::group(['prefix' => 'home', 'as' => 'HomePage::', 'middleware' => 'auth'],
     }]);
 });
 
-Route::group(['prefix' => 'api', 'as' => 'api::', 'middleware' => 'auth'], function() {
+Route::group(['namespace' => 'Api', 'prefix' => 'api', 'as' => 'api::', 'middleware' => 'auth'], function() {
     //  Controllers Within The "App\Http\Controllers\Admin" Namespace
-    Route::controller('users', 'User\UserController');
-//  Route::group(['namespace' => 'User'], function() {
-//    Controllers Within The "App\Http\Controllers\Admin\User" Namespace
-//  });
+    Route::resource('users', 'User\UserController');
+//     Route::group(['namespace' => 'User', 'as' => 'user::', 'prefix' => 'users'], function() {
+        // Controllers Within The "App\Http\Controllers\Admin\User" Namespace
+//     });
+    Route::any('nutritions', ['as' => 'nutritions', 'controller' => 'Store\NutritionController']);
 });
 
 Route::any('/', function(){
