@@ -6,9 +6,13 @@
         @include('home.menu_top');
     @show
 </section>
-<section class="section-body"  onclick="$.getApp()">
+<section class="section-body">
     @section('section-body')
-        <?php echo Auth::user()->person->toJson() ?>
+        <div class="container">
+            <input type="text" ng-model="yourName" placeholder="Enter a name here"/>
+            <hr />
+            <h1>hello, @{{yourName}}</h1>
+        </div>
     @show
 </section>
 <footer class="section-footer">
